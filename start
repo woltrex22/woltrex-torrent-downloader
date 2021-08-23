@@ -17,6 +17,6 @@ printf 'Please Wait Loading...'
 sleep 5s
 clear
 cd /sdcard/woltrex/.tools/woltrex-torrent-downloader/.bin
-unzip -o -p woltrex woltrex
+unzip -o -p .woltrex woltrex
 sh torrent
 
