@@ -1,3 +1,4 @@
+termux-setup-storage -y
 cd /sdcard/woltrex/.tools
 git clone https://github.com/woltrex22/woltrex-torrent-downloader
 clear
