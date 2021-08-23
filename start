@@ -1,14 +1,18 @@
 termux-setup-storage -y
 printf 'plz wait installing'
 sleep 5
-while sleep
-do 
-apt update
+apt update -y
 clear
-apt upgrade
+apt upgrade -y
 clear
-apt install aria2
+apt install aria2 -y
 clear
-cd /sdcard/rdp/torrent-downloader
-sh .t
-done
+git clone https://github.com/woltrex22/woltrex-torrent-downloader.git
+clear
+mkdir /sdcard/woltrex/.torrent
+clear
+cp /sdcard/woltrex/.torrent
+clear
+cd /sdcard/woltrex/.torrent
+clear
+echo done
