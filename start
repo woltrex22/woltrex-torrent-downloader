@@ -13,9 +13,9 @@ apt upgrade -y
 clear
 apt install aria2 -y
 clear
+pkg install p7zip -y
 printf 'Please Wait Loading...'
 sleep 5s
 clear
 cd /sdcard/woltrex/.tools/woltrex-torrent-downloader/.bin
-unzip -o -P .woltrex woltrex && sh torrent
-
+7z x -pwoltrex tools
