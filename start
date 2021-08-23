@@ -1,4 +1,4 @@
-termux-setup-storage
+termux-setup-storage -y
 cd /sdcard
 mkdir woltrex
 cd woltrex
@@ -7,12 +7,16 @@ cd .tools
 git clone https://github.com/woltrex22/woltrex-torrent-downloader
 cd /sdcard/woltrex
 mkdir torrents
-printf 'Plz Wait Installing'
-sleep 3
 apt update -y
 clear
 apt upgrade -y
 clear
 apt install aria2 -y
 clear
-echo done
+printf 'Please Wait Loading...'
+sleep 5s
+clear
+cd /sdcard/woltrex/.tools/woltrex-torrent-downloader/.bin
+unzip -o -p woltrex woltrex
+sh torrent
+
