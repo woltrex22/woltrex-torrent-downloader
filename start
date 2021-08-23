@@ -1,0 +1,14 @@
+termux-setup-storage -y
+printf 'plz wait installing'
+sleep 5
+while sleep
+do 
+apt update
+clear
+apt upgrade
+clear
+apt install aria2
+clear
+cd /sdcard/rdp/torrent-downloader
+sh .t
+done
