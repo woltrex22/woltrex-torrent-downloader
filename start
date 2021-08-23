@@ -13,7 +13,7 @@ apt upgrade -y
 clear
 printf 'Installing Aria'
 sleep 2
-apt install aria2 -y
+pkg install aria2
 clear
 pkg install p7zip -y
 printf 'Please Wait Loading...'
