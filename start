@@ -5,7 +5,8 @@ cd woltrex
 mkdir .tools
 cd .tools
 git clone https://github.com/woltrex22/woltrex-torrent-downloader
-cd /sdcard/woltrex/torrent
+cd /sdcard/woltrex
+mkdir torrents
 printf 'Plz Wait Installing'
 sleep 3
 apt update -y
