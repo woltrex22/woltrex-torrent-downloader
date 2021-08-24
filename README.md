@@ -1,4 +1,4 @@
-# woltrex-torrent-downloader(Termux)
+# torrent-downloader(Termux)
 
 ## First time installtion code 
 
@@ -7,4 +7,6 @@ termux-setup-storage;apt update -y;apt upgrade -y;pkg install git -y;git clone h
 
 ```
 
-### After Installed you can open it again using start.sh at storage/woltrex folder.
+#### After Installed you can open it again using start.sh at storage/woltrex folder.
+
+#### New Features coming soon
