@@ -14,7 +14,7 @@ else
 clear
 termux-setup-storage -y
 clear
-pkg install p7zip -y
+pkg install p7zip
 cd /data/data/com.termux/files/home/woltrex-torrent-downloader/.bin
 7z x -pwoltrex tools
 clear
