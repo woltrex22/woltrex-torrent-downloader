@@ -1,4 +1,5 @@
-termux-setup-storage
+termux-setup-storage -y
+pkg install p7zip -y
 cd /sdcard/woltrex/.tools/woltrex-torrent-downloader/.bin
 itest=`cat install_test.txt`
 clear
