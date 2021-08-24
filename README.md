@@ -1,4 +1,4 @@
-# torrent-downloader(Termux)
+# torrent-downloader (Termux)
 
 ## First time installtion code 
 
