@@ -35,7 +35,7 @@ termux-setup-storage -y
 cd /data/data/com.termux/files/home
 cd woltrex-torrent-downloader
 cd .bin
-7z x -pwoltrex tools A
+7z x -pwoltrex tools
 clear
 tracker_list=$(curl -Ns https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt https://ngosang.github.io/trackerslist/trackers_all_http.txt https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt https://raw.githubusercontent.com/hezhijie0327/Trackerslist/main/trackerslist_combine.txt | awk '$0' | tr '\n' ',')
 clear
