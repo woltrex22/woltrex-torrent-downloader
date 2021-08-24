@@ -1,25 +1,58 @@
-termux-setup-storage -y
-cd /sdcard
-mkdir woltrex
-cd woltrex
-mkdir .tools
-cd .tools
-git clone https://github.com/woltrex22/woltrex-torrent-downloader
-cd /sdcard/woltrex
-mkdir torrents
-apt update -y
-clear
-apt upgrade -y
-clear
-printf 'Installing Aria'
-sleep 2
-pkg install aria2
-clear
-pkg install p7zip -y
-printf 'Please Wait Loading...'
-sleep 5s
-clear
+termux-setup-storage
 cd /sdcard/woltrex/.tools/woltrex-torrent-downloader/.bin
-7z x -pwoltrex tools
+itest=`cat install_test.txt`
+clear
+echo $itest
+sleep 3s
+if [ $itest -eq 1 ]
+then
+cd /sdcard/woltrex/.tools/woltrex-torrent-downloader/.bin
+printf 'Requesting Trackers'
+sleep 3s
+clear
+tracker_list=$(curl -Ns https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt https://ngosang.github.io/trackerslist/trackers_all_http.txt https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt https://raw.githubusercontent.com/hezhijie0327/Trackerslist/main/trackerslist_combine.txt | awk '$0' | tr '\n' ',')
+clear
+echo $tracker_list
+sleep 4s
+aria2c --enable-rpc --rpc-listen-all=false --check-certificate=false \
+   --max-connection-per-server=10 --rpc-max-request-size=1024M \
+   --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker-connect-timeout=300 --bt-stop-timeout=1200 --min-split-size=10M \
+   --follow-torrent=mem --split=10 \
+   --daemon=true --allow-overwrite=true
+   --max-overall-upload-limit=1K
+   --peer-id-prefix=-qB4360- --user-agent=qBittorrent/4.3.6 --peer-agent=qBittorrent/4.3.6 \
+   --disk-cache=64M --file-allocation=prealloc --continue=true \
+   --max-file-not-found=0 --max-tries=20 --auto-file-renaming=true \
+   --bt-enable-lpd=true --seed-time=0.01 --seed-ratio=1.0 \
+   --content-disposition-default-utf8=true --http-accept-gzip=true --reuse-uri=true
+aria2c --enable-rpc --rpc-listen-all=false --rpc-listen-port 6800 --max-connection-per-server=10 --rpc-max-request-size=1024M --seed-time=0.01 --min-split-size=10M --follow-torrent=mem --split=10 --daemon=true --allow-overwrite=true
+clear
 cd /sdcard/woltrex/.tools/woltrex-torrent-downloader/.bin
 sh torrent
+else
+termux-setup-storage -y
+cd /data/data/com.termux/files/home
+cd woltrex-torrent-downloader
+cd .bin
+7z x -pwoltrex tools A
+clear
+tracker_list=$(curl -Ns https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt https://ngosang.github.io/trackerslist/trackers_all_http.txt https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt https://raw.githubusercontent.com/hezhijie0327/Trackerslist/main/trackerslist_combine.txt | awk '$0' | tr '\n' ',')
+clear
+echo $tracker_list
+sleep 4s
+aria2c --enable-rpc --rpc-listen-all=false --check-certificate=false \
+   --max-connection-per-server=10 --rpc-max-request-size=1024M \
+   --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker-connect-timeout=300 --bt-stop-timeout=1200 --min-split-size=10M \
+   --follow-torrent=mem --split=10 \
+   --daemon=true --allow-overwrite=true
+   --max-overall-upload-limit=1K
+   --peer-id-prefix=-qB4360- --user-agent=qBittorrent/4.3.6 --peer-agent=qBittorrent/4.3.6 \
+   --disk-cache=64M --file-allocation=prealloc --continue=true \
+   --max-file-not-found=0 --max-tries=20 --auto-file-renaming=true \
+   --bt-enable-lpd=true --seed-time=0.01 --seed-ratio=1.0 \
+   --content-disposition-default-utf8=true --http-accept-gzip=true --reuse-uri=true
+aria2c --enable-rpc --rpc-listen-all=false --rpc-listen-port 6800 --max-connection-per-server=10 --rpc-max-request-size=1024M --seed-time=0.01 --min-split-size=10M --follow-torrent=mem --split=10 --daemon=true --allow-overwrite=true
+clear
+cd /data/data/com.termux/files/home/woltrex-torrent-downloader/.bin
+sh install
+fi
